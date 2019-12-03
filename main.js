@@ -2,7 +2,7 @@
 
 const apiKey = 'yMEXCJKs2Lbu90tjAm3QRJtKvVXTLahdqch6ihp5';
 const searchURL = 'https://developer.nps.gov/api/v1/parks';
-let isLoading = false;
+let isLoading = false; 
 
 
 //convert objects 
@@ -22,7 +22,7 @@ function getNationalParks(query, maxResults = 10) {
     };
 
     isLoading = true;
-    setLoader();
+    setLoader($('.results-list').html('<h1>Data is loading, please wait...</h1>');
 
     const queryString = formatQueryParams(params);
     const url = searchURL + '?' + queryString;
@@ -43,7 +43,7 @@ function getNationalParks(query, maxResults = 10) {
 function displayResults(responseJson) {
     console.log(responseJson);
     isLoading = false;
-    setLoader();
+    setLoader($('.results-list').empty());
 
     //removes previous search results 
     $('.results-list').empty();
@@ -61,6 +61,7 @@ function displayResults(responseJson) {
           <p>Description: ${description}</p>
           <p>URL: <a href="${url}" target="_blank">${url}</a></p>
         </li>`;
+
     }
 
     //displays the result section 
@@ -68,13 +69,8 @@ function displayResults(responseJson) {
     $('#results').removeClass('hidden');
 }
 
-function setLoader() {
-  if (isLoading) {
-    $('.results-list').html('<h1>Data is loading, please wait...</h1>');
-  } else {
-    $('.results-list').empty();
-  }
-}
+
+
 
 function watchForm() {
     $('.search-form').submit(event => {
