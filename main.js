@@ -17,6 +17,8 @@ function formatQueryParams(params) {
 
 //GET request
 function getNationalParks(query, maxResults=10) {
+    maxResults -= 1;
+
     const params = {
         api_key: apiKey,
         limit: maxResults,
@@ -29,7 +31,7 @@ function getNationalParks(query, maxResults=10) {
     fetch(url) 
         .then(response => {
             if(response.ok) {
-                return response.json
+                return response.json();
             }
             throw new Error(response.statusText);
         })
@@ -50,7 +52,7 @@ function displayResults(responseJson) {
         const name = park.name;
         const image = park.images;
         const description = park.description;
-        const url = park.url
+        const url = park.url;
 
         html += `
         <li><h3>${name}</h3>
