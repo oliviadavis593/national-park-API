@@ -76,8 +76,15 @@ header {
 /*===========================*/
 
 
+
+
 .results-list {
     border: 3px solid #000; 
-    width: 500px; 
+    width: 600px; 
     height: auto; 
+    
+}
+
+.results-list li {
+    list-style: none;
 }
