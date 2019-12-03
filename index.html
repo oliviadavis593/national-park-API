@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>National Parks Services</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        
+        <header>
+            <h1>List of National Parks</h1>
+        </header>
+
+        <section id="national-container">
+            <form class="search-form">
+                <label for="search-term">Search for your favorite park!</label>
+                <input type="text" class="national-input" placeholder="Yellowstone" required>
+
+                <label for="max-results">Maximum results to return</label>
+                <input type="number" name="max-results" class="max-results" value="10">
+
+                <input type="submit" name="submit" class="submit-button" value="Submit">
+            </form>
+        </section>
+
+        <div id="js-error-message" class="error-message"></div>
+        <section id="results">
+            <div id="displayed-results" class="hidden"></div>
+        </section>
+        <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+        <script src="main.js"></script> 
+    </body>
+</html>
