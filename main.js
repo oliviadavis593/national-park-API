@@ -17,7 +17,7 @@ function formatQueryParams(params) {
 
 //GET request
 function getNationalParks(query, maxResults=10) {
-    maxResults -= 1;
+    
 
     const params = {
         api_key: apiKey,
@@ -50,7 +50,7 @@ function displayResults(responseJson) {
     for(let i = 0; i < responseJson.data.length; i+= 1) {
         const park = responseJson.data[i];
         const name = park.name;
-        const image = park.images;
+        const images = park.images;
         const description = park.description;
         const url = park.url;
 
@@ -58,7 +58,7 @@ function displayResults(responseJson) {
         <li><h3>${name}</h3>
           <img href="${images}">
           <p>Description: ${description}</p>
-          <p>URL: <a href="${url}">${url}</a></p>
+          <p>URL: <a href="${url}" target="_blank">${url}</a></p>
         </li>`;
     }
 
@@ -70,8 +70,8 @@ function displayResults(responseJson) {
 function watchForm() {
     $('.search-form').submit(event => {
         event.preventDefault();
-        const searchTerm = $('.national-input').find(this).val();
-        const maxResults = $('.max-results').find(this).val();
+        const searchTerm = $('.national-input').val();
+        const maxResults = $('.max-results').val();
         getNationalParks(searchTerm, maxResults);
     });
     
