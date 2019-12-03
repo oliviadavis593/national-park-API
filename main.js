@@ -17,7 +17,7 @@ function formatQueryParams(params) {
 //GET request
 function getNationalParks(query, maxResults=10) {
     const params = {
-        key: apiKey,
+        api_key: apiKey,
         limit: maxResults,
         stateCode: query
     };
