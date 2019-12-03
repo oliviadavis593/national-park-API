@@ -1,0 +1,29 @@
+*{
+    box-sizing: border-box;
+}
+
+
+body {
+  margin: 0; 
+  height: 130vh;
+}
+
+header {
+    border: 1px solid #000; 
+    width: 100%; 
+    height: 65vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0.40)),url(images/national-banner.jpg);
+    background-size: cover;
+    background-color: #cf6d17;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+#national-container {
+    margin: 70px auto; 
+    border: 3px solid #000; 
+    width: 400px; 
+    height: 350px; 
+}
