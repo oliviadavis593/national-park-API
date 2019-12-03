@@ -6,6 +6,8 @@
 body {
   margin: 0; 
   height: 130vh;
+  background-color: #8c5553;
+  font-family: 'Bebas Neue', cursive;
 }
 
 header {
@@ -19,7 +21,10 @@ header {
     justify-content: center;
     align-items: center;
     color: #fff;
+    font-size: 40px; 
 }
+
+
 
 #national-container {
     margin: 70px auto; 
@@ -27,3 +32,45 @@ header {
     width: 400px; 
     height: 350px; 
 }
+
+/*===========================*/
+  /* Search Section--------- */
+/*===========================*/
+
+.search-form {
+    margin-top: 30px; 
+    display: flex; 
+    align-items: center;
+    flex-direction: column;
+}
+
+.national-input {
+    margin-bottom: 30px;
+    width: 200px; 
+    height: 40px; 
+}
+
+.search-label {
+    margin-bottom: 20px;
+    font-size: 25px; 
+}
+
+.max-label {
+    margin-bottom: 20px; 
+    font-size: 25px; 
+}
+
+.max-results {
+    width: 40px; 
+    height: 40px;
+}
+
+.submit-button {
+    margin-top: 30px; 
+    width: 140px; 
+}
+
+
+/*===========================*/
+  /* Results Section--------- */
+/*===========================*/
