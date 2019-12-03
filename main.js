@@ -1,12 +1,9 @@
-'use strict';
+ 'use strict';
 
 const apiKey = 'yMEXCJKs2Lbu90tjAm3QRJtKvVXTLahdqch6ihp5';
 const searchURL = 'https://developer.nps.gov/api/v1/parks';
+let isLoading = false;
 
-$(document).ready(() => {
-    console.log('App has loaded...Please submit something!');
-    watchForm();
-});
 
 //convert objects 
 function formatQueryParams(params) {
@@ -16,14 +13,16 @@ function formatQueryParams(params) {
 }
 
 //GET request
-function getNationalParks(query, maxResults=10) {
+function getNationalParks(query, maxResults = 10) {
     
-
     const params = {
         api_key: apiKey,
         limit: maxResults,
-        stateCode: query
+        stateCode: query,
     };
+
+    isLoading = true;
+    setLoader();
 
     const queryString = formatQueryParams(params);
     const url = searchURL + '?' + queryString;
@@ -43,8 +42,11 @@ function getNationalParks(query, maxResults=10) {
 
 function displayResults(responseJson) {
     console.log(responseJson);
+    isLoading = false;
+    setLoader();
+
     //removes previous search results 
-    $('#results-list').empty();
+    $('.results-list').empty();
     //iterate through items array
     let html = '';
     for(let i = 0; i < responseJson.data.length; i+= 1) {
@@ -56,15 +58,22 @@ function displayResults(responseJson) {
 
         html += `
         <li><h3>${name}</h3>
-          <img href="${images}">
           <p>Description: ${description}</p>
           <p>URL: <a href="${url}" target="_blank">${url}</a></p>
         </li>`;
     }
 
     //displays the result section 
-    $('#results-list').html(html);
+    $('.results-list').html(html);
     $('#results').removeClass('hidden');
+}
+
+function setLoader() {
+  if (isLoading) {
+    $('.results-list').html('<h1>Data is loading, please wait...</h1>');
+  } else {
+    $('.results-list').empty();
+  }
 }
 
 function watchForm() {
@@ -76,3 +85,5 @@ function watchForm() {
     });
     
 }
+
+watchForm();
