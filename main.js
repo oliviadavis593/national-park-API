@@ -2,7 +2,6 @@
 
 const apiKey = 'yMEXCJKs2Lbu90tjAm3QRJtKvVXTLahdqch6ihp5';
 const searchURL = 'https://developer.nps.gov/api/v1/parks';
-let isLoading = false; 
 
 
 //convert objects 
@@ -21,8 +20,7 @@ function getNationalParks(query, maxResults = 10) {
         stateCode: query,
     };
 
-    isLoading = true;
-    setLoader($('.results-list').html('<h1>Data is loading, please wait...</h1>');
+    
 
     const queryString = formatQueryParams(params);
     const url = searchURL + '?' + queryString;
@@ -42,8 +40,7 @@ function getNationalParks(query, maxResults = 10) {
 
 function displayResults(responseJson) {
     console.log(responseJson);
-    isLoading = false;
-    setLoader($('.results-list').empty());
+    
 
     //removes previous search results 
     $('.results-list').empty();
